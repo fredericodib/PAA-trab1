@@ -153,24 +153,22 @@ int main() {
 								change = 0;
 								break;
 							}
-							else {
-								if (esc[school_id][1] == 2) {
-									prof_id = emp[school_id][1];
-									if(prof[i][6] == 0) {
-										if (esc[school_id][0] != prof[prof_id][0]) {/*Caso o professor tenha a habilidade, mas o professor antigo n tiver, o novo entra e o antigo sai*/
-											emp[school_id][0] = i;
-											prof[i][6] = 1;/*Professor agora não é mais desempregado*/
-											prof[prof_id][6] = 0;/*Professor antigo agora é mais desempregado*/
-											printf("P%d Foi removido da escola pois P%d se encaixava melhor\n", prof_id+1,i+1);
-											printf("P%d Foi empregado\n", i+1);
-											change = 0;
-											break;
-										}
+							if (esc[school_id][1] == 2) {
+								prof_id = emp[school_id][1];
+								if(prof[i][6] == 0) {
+									if (esc[school_id][0] != prof[prof_id][0]) {/*Caso o professor tenha a habilidade, mas o professor antigo n tiver, o novo entra e o antigo sai*/
+										emp[school_id][0] = i;
+										prof[i][6] = 1;/*Professor agora não é mais desempregado*/
+										prof[prof_id][6] = 0;/*Professor antigo agora é mais desempregado*/
+										printf("P%d Foi removido da escola pois P%d se encaixava melhor\n", prof_id+1,i+1);
+										printf("P%d Foi empregado\n", i+1);
+										change = 0;
+										break;
 									}
 								}
-								else {
-									printf("P%d Não foi contratado pois os outros professores tambem tinham as qualidades que a escola queria\n", i+1);
-								}
+							}
+							else {
+								printf("P%d Não foi contratado pois os outros professores tambem tinham as qualidades que a escola queria\n", i+1);
 							}
 						}
 						else {
